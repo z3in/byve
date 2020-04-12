@@ -1,0 +1,52 @@
+
+/*init layout*/
+.init{
+    padding:0.5em;
+    background:rgba(255, 255, 255, 0.333);
+    box-shadow: 1px 2px 5px rgba(59, 59, 59, 0.537);
+    margin-bottom: 1em;
+}
+.init-search{
+    width:100%;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.init-search-bar{
+    display:flex;
+    flex-direction: column;
+    width:40%;
+}
+.init-results{
+    display:flex;
+    width:100%;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+
+/* init forms */
+.init-search-text{
+    font-size: 0.75rem;
+}
+#init-search-input{
+    padding:0.5em;
+    font-size: 1rem;
+    border:0;
+    border-bottom:2px solid rgba(108, 57, 117, 0.666);
+    outline:none;
+    background:none;
+    color:rgba(108, 57, 117, 0.666);
+    width:100%;
+}
+
+
+/*prods result*/
+
+.prod-card-bg{
+    background: #FFF;
+    display:flex;
+    width:30%;
+    margin-bottom:10px;
+    flex-direction: column;
+}

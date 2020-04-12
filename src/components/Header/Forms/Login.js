@@ -40,7 +40,9 @@ const Login = (props) =>{
                     <button className="fb">Facebook</button>
                     <button className="gmail">Gmail</button>
                 </div>
-                
+                <div className="login-body mid">
+                    <span className="login-mid-text"> - OR -</span>
+                </div>
                 <form className="login-body second" onSubmit={e => {handleSubmit(e)}}>
                     <div>
                         <input type="email" 
