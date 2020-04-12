@@ -2,7 +2,7 @@
  
  follow instruction on his repo afterwards you can clone/pull this repo
 
-FF : 
+Instructions : 
 
 `cd /root folder`
 
