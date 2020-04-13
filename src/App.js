@@ -5,6 +5,9 @@ import Header from './components/Header/Header'
 import Main from './components/Main/Main'
 import SignUp from './components/Header/Forms/SignUp'
 import Init from './pages/Init'
+import User from './pages/User'
+
+
 import { Test } from './test'
 
 const App = () => {
@@ -14,10 +17,16 @@ const App = () => {
     </Header>
     <Main>
         <Switch>
-          <Redirect exact from="/" to="/products" component={Init}/>
-          <Route path="/products" component={Init} />
-          <Route path="/signup" component={SignUp}/>
+          <Redirect exact strict from="/" to="/products" component={Init}/>
+          <Route exact strict path="/products" component={Init} />
+          <Route exact strict path="/signup" component={SignUp}/>
+          
+          <Route path="/User" component={User}/>
+
           <Route path="/test" component={Test}/>
+          <Route >
+            <div className="container"><h1>Page Not found</h1></div>
+          </Route>
         </Switch>
     </Main>
     </>

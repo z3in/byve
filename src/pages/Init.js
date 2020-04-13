@@ -60,12 +60,15 @@ const Init = () =>{
                     if(products.length === index + 1){
                         return  (
                         <div ref={lastProductElement} key={prod.id}  className="prod-card-bg">
-                             <div><img src={image} alt="products"/></div>
-                                <div><h3>{prod.name}</h3></div>
-                                <div>{prod.description}</div>
-                                <div>{prod.price}</div>
-                                <div>{prod.curr_rating}</div>
-                                <div><button>Add to Cart</button></div>
+                                <div className="prod-card-image"><img src={image} alt="products"/></div>
+                                <div className="prod-card-title"><h3>{prod.name}</h3></div>
+                                <div className="prod-card-details">item details :</div>
+                                <div className="prod-card-details product-after">{prod.description}</div>
+                                <div className="prod-price-rating"><div>price</div><div>rating</div></div>
+                                <div className="prod-price-rating"><div><span class="prod-price">PhP {prod.price}.00</span></div>
+                                        <div className="prod-rating">{rating(parseInt(prod.curr_rating))}</div></div>
+                                
+                                <div className="prod-card-add2cart"><button>Add to Cart</button></div>
                         </div>
                         )
                     }else{
