@@ -1,7 +1,7 @@
 import React,{ useEffect, useState } from 'react'
 
 
-export const RequestProduct  = (query,pageNumber) =>{
+const RequestProduct  = (query,pageNumber) =>{
     
     const [loading,setLoading] = useState(true)
     const [products,setProducts] = useState([])
@@ -49,3 +49,5 @@ export const RequestProduct  = (query,pageNumber) =>{
     },[query,pageNumber])
     return {loading,products,hasResult,hasError};
 }
+
+export { RequestProduct }

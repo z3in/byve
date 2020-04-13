@@ -44,9 +44,58 @@
 /*prods result*/
 
 .prod-card-bg{
-    background: #FFF;
-    display:flex;
-    width:30%;
+    position: relative;
+    background: rgba(255, 255, 255, 0.626);
+    width: 250px;
+    height: 350px;
     margin-bottom:10px;
     flex-direction: column;
+    padding:0.5em;
+    box-shadow: 1px 1px 2px rgba(51, 51, 51, 0.244);
+}
+.prod-card-image{
+    display: flex;
+    justify-content: center;
+}
+.prod-card-title{
+    font-size: 1rem;
+    margin-bottom:0.5em;
+}
+
+.prod-card-add2cart{
+    margin-top:0.6em;
+}
+
+.prod-card-add2cart button{
+    width:100%;
+    outline:none;
+    border:2px solid plum;
+    color:#FFF;
+    font-size: 1rem;
+    font-weight: bolder;
+    background:plum;
+    padding:0.25em;
+    cursor: pointer;
+}
+.prod-card-details{
+    font-size: small;
+    color:rgba(0, 0, 0, 0.666)
+}
+.product-after{
+    margin-bottom:10px;
+    text-overflow: ellipsis;
+    height:40px;
+}
+.prod-price-rating{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: small;
+}
+.prod-price{
+    font-size: 1.5em;
+    color:rgb(22, 116, 33);
+}
+.prod-rating{
+    display:flex;
 }

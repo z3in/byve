@@ -2,11 +2,12 @@ import React,{ useState,useRef,useCallback } from 'react'
 import { RequestProduct } from '../components/Main/Products/RequestProduct'
 import './custom.css'
 
+import star from '../components/img/star.png'
 import image from '../components/img/img.png'
 
 const Init = () =>{
     const [query,setQuery] = useState('')
-    const [pageNumber,setPageNumber] = useState('')
+    const [pageNumber,setPageNumber] = useState(0)
     const [typingTimeout,setTypingTimeout] = useState(0)
 
     
@@ -18,9 +19,7 @@ const Init = () =>{
         if(observer.current) observer.current.disconnect()
         observer.current = new IntersectionObserver(entries =>{
             if (entries[0].isIntersecting && hasResult){
-                setTimeout(()=>{
                     setPageNumber(prevPageNumber => prevPageNumber + 1)
-                },500)
             }
         })
         if(elem) observer.current.observe(elem)
@@ -35,6 +34,13 @@ const Init = () =>{
             setQuery(value)
             setPageNumber(1)
         },300))
+    }
+    const rating = (stars) =>{
+        let starselem = []
+        for(let i = 0;i <stars;i++){
+            starselem.push(<div><img alt="star rating" src={star} width="20"/></div>)
+        }
+        return starselem;
     }
     
     return(
@@ -54,17 +60,26 @@ const Init = () =>{
                     if(products.length === index + 1){
                         return  (
                         <div ref={lastProductElement} key={prod.id}  className="prod-card-bg">
-                            <div><img src={image} alt="products"/></div>
+                             <div><img src={image} alt="products"/></div>
                                 <div><h3>{prod.name}</h3></div>
                                 <div>{prod.description}</div>
+                                <div>{prod.price}</div>
+                                <div>{prod.curr_rating}</div>
+                                <div><button>Add to Cart</button></div>
                         </div>
                         )
                     }else{
                         return  (
                             <div key={prod.id} className="prod-card-bg">
-                                <div><img src={image} alt="products"/></div>
-                                <div><h3>{prod.name}</h3></div>
-                                <div>{prod.description}</div>
+                                <div className="prod-card-image"><img src={image} alt="products"/></div>
+                                <div className="prod-card-title"><h3>{prod.name}</h3></div>
+                                <div className="prod-card-details">item details :</div>
+                                <div className="prod-card-details product-after">{prod.description}</div>
+                                <div className="prod-price-rating"><div>price</div><div>rating</div></div>
+                                <div className="prod-price-rating"><div><span class="prod-price">PhP {prod.price}.00</span></div>
+                                        <div className="prod-rating">{rating(parseInt(prod.curr_rating))}</div></div>
+                                
+                                <div className="prod-card-add2cart"><button>Add to Cart</button></div>
                             </div>
                             )
                     }

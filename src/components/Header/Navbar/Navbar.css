@@ -1,6 +1,6 @@
 
 :root{
-    --color: rgba(161, 30, 170, 0.286); /*bg  var*/
+    --color: rgba(161, 30, 170, 0.571); /*bg  var*/
 }
 nav{
     width:100%;    
@@ -33,4 +33,9 @@ nav a{
     text-decoration: none;
     color:#FFF;
     outline: none;
+}
+.nav-cart-num{
+    background:rgb(117, 100, 146);
+    padding:0.25em;
+    margin-left:0.25em;
 }

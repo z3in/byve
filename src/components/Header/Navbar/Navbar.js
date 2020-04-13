@@ -20,10 +20,13 @@ const Navbar = () =>{
                  <Link to="/">BYVE</Link>
                 <ul>
                     <li>
+                        <Link>CART<span className="nav-cart-num">0</span></Link>
+                    </li>
+                    <li>
                         <Link to="/signup">SIGN UP</Link>
                     </li>
                     <li>
-                        <Link to="/login" onClick={handleToggle}>SIGN IN</Link>
+                        <Link onClick={handleToggle}>SIGN IN</Link>
                     </li>
                 </ul>
             </div>

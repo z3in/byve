@@ -16,6 +16,7 @@
     visibility: hidden;
     opacity: 0;
     transition:visibility 0s,opacity 0.5s; 
+    z-index:50000;
 }
 .login-modal-bg{
     position: relative;
@@ -185,6 +186,29 @@
 }
 .signup-bg{
     width:50%;
-    background:rgba(77, 49, 49, 0.455);
-    box-shadow: 1px 1px 5px plum;
+    background:rgba(77, 49, 49, 0.639);
+    box-shadow: 1px 1px 5px rgb(0, 0, 0);
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding:1em;
+}
+.signup-div{
+    margin-bottom:0.5em;
+    display: flex;
+    flex-direction: column;
+    width:100%;
+}
+.signup-div label{
+    margin-bottom:1em;
+    color:#FFF;
+}
+.signup-div input{
+    width:100%;
+    padding:0.5em;
+    font-size:1rem;
+    border:0;
+    background:none;
+    border-bottom:1px solid rgba(255, 255, 255, 0.483);
+    outline:none;
 }

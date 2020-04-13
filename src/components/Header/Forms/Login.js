@@ -1,33 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './forms.css'
 import { InputHandler } from './InputHandler'
 import { Link } from 'react-router-dom'
+import { AuthenticateUser } from './FetchHandler'
 
 const Login = (props) =>{
     const {value: email, bind:bindEmail, reset: resetEmail } = InputHandler('')
     const {value: password, bind:bindPassword, reset: resetPassword } = InputHandler('')
+    const [postData,setPostData] = useState({})
+    const { result } = AuthenticateUser(postData)
 
     const handleSubmit =(e) => {
         e.preventDefault()
-        const data = {
-            email: email,
-            password: password
+        if(email === '' || password === ''){
+            alert('Fields are required')
+        }else{
+            setPostData({
+                email: email,
+                password: password
+            })
         }
-        fetch('../api/login',{
-            method:'POST',
-            cache: 'default',
-            headers:{
-                'Accept': 'application/json, text/plain, */*',
-                'Content-Type': 'application/json;charset=UTF-8'
-                
-            },
-            body: JSON.stringify(data)
-        }).then(res =>{
-            console.log(res)
-        })
-
-        
-        
+        console.log(result.message);
     }
     return(
         <div className={`login-main${props.toggle}`}>
