@@ -1,9 +1,17 @@
 import React from 'react'
 
 
+import Dashboard from '../components/Main/User/Dashboard'
+
+
 const User = () =>{
     return(
-        <div>hello user</div>
+        <div className="container">
+           <Dashboard/>
+            <div className="user-content">
+                
+            </div>
+        </div>
     )
 }
 

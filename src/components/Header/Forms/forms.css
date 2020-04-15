@@ -38,7 +38,7 @@
 
 .login-header{
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width:100%;
 }
 .login-footer{
@@ -70,6 +70,15 @@
 .mid{
     display: flex;
     justify-content: center;
+}
+.login-btns{
+    display:flex;
+    width:100%;
+}
+.login-btns div{
+    display:flex;
+    justify-content: space-evenly;
+    width:49%;
 }
 
 /* login-typography */
@@ -115,7 +124,7 @@
 .login-body button{
     padding:0.5em;
 }
-.second button{
+.second .login-btns button{
     margin-top:0.75em;
     width:100%;
     outline:none;
@@ -128,35 +137,40 @@
     box-shadow: 1px 1px 3px purple;
     cursor: pointer;
 }
+
 .login-modal-close button{
     cursor: pointer;
     padding:0.5em;
-    margin-top:-1em;
+    margin-right:-.5em;
+    margin-top:-2em;
     outline:none;
-}
-
-.login-modal-close button{
-    background:none;
+    color:#FFF;
+    border-radius: 0.25em;
+    background: rgb(192, 161, 161) !important;
+    box-shadow: 1px 1px 3px rgb(141, 121, 121) !important;
+    border:2px solid rgb(170, 121, 121) !important;
     border:0;
 }
 .first button{
     outline:none;
     cursor: pointer;
+    margin-right:1em;
 }
 .fb{
     background:rgb(33, 73, 190);
     border:0;
     color:#FFF;
-    width:40%;
+    width:30%;
     box-shadow:1px 1px 5px rgb(3, 9, 26);
 }
 .gmail{
-    background:rgb(202, 62, 62);
+    background:rgb(195, 82, 82);
     border:0;
     color:#FFF;
     width:30%;
     box-shadow: 1px 1px 3px rgb(114, 6, 6);
 }
+
 
 /*login-animation*/
 
@@ -211,4 +225,20 @@
     background:none;
     border-bottom:1px solid rgba(255, 255, 255, 0.483);
     outline:none;
+}
+.signup-btn-container{
+    width:100%;
+    display:flex;
+    justify-content: space-evenly;
+    margin-top:2em;
+}
+.signup-btn-container button{
+    padding:1em;
+    border-radius: 1em;
+    border-style: none;
+    background: rgb(165, 28, 199,1);
+    color:#FFF;
+    width:45%;
+    font-size: 1rem;
+    font-weight: 700;
 }

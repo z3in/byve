@@ -38,6 +38,9 @@ const SignUp = () =>{
                         {...bindConfirmPassword}
                         />
                     </div>
+                    <div className="signup-btn-container">
+                        <button>Sign up</button>
+                    </div>
                 </div> 
             </div>
     )

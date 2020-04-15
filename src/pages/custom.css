@@ -64,10 +64,12 @@
 
 .prod-card-add2cart{
     margin-top:0.6em;
+    display:flex;
+    justify-content: space-between;
 }
 
 .prod-card-add2cart button{
-    width:100%;
+    width:49%;
     outline:none;
     border:2px solid plum;
     color:#FFF;

@@ -5,7 +5,9 @@ const AuthenticateUser = (postData) =>{
     const [result,setResult] = useState({})
 
     useEffect(() =>{
-        fetch('../api/login',{
+        console.log(postData.email)
+        if(postData.email !== '')
+        {fetch('../api/login',{
             method:'POST',
             cache: 'default',
             headers:{
@@ -21,6 +23,7 @@ const AuthenticateUser = (postData) =>{
             setResult(data)
         })
         .catch(err=>console.log('err'))
+        }
     },[postData])
 
     return { result }

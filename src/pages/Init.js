@@ -1,5 +1,6 @@
 import React,{ useState,useRef,useCallback } from 'react'
 import { RequestProduct } from '../components/Main/Products/RequestProduct'
+import ProductView from '../components/Main/Products/ProductView'
 import './custom.css'
 
 import star from '../components/img/star.png'
@@ -9,7 +10,8 @@ const Init = () =>{
     const [query,setQuery] = useState('')
     const [pageNumber,setPageNumber] = useState(0)
     const [typingTimeout,setTypingTimeout] = useState(0)
-
+    const [toggleProdView,setToggleProdView] = useState('')
+    const [viewProd, setViewProd] = useState({})
     
     const { products,hasResult,loading,hasError } = RequestProduct(query,pageNumber)
 
@@ -25,6 +27,22 @@ const Init = () =>{
         if(elem) observer.current.observe(elem)
     },[loading,hasResult])
 
+    const toggleView = (btn_id) => {
+        let btn_id_int = parseInt(btn_id)
+        if(toggleProdView===''){
+            setToggleProdView(' product-active')
+        }else{
+            setToggleProdView('')
+        }
+        let result = products.find(prod => prod.id === btn_id_int)
+        setViewProd(result)
+    }
+
+    const handleClose = () => {
+        setToggleProdView('')
+        setViewProd({})
+    }
+
     function handleSearch(e){
         if (typingTimeout){
             clearTimeout(typingTimeout)
@@ -38,11 +56,10 @@ const Init = () =>{
     const rating = (stars) =>{
         let starselem = []
         for(let i = 0;i <stars;i++){
-            starselem.push(<div><img alt="star rating" src={star} width="20"/></div>)
+            starselem.push(<div key={i}><img alt="star rating" src={star} width="20"/></div>)
         }
         return starselem;
     }
-    
     return(
         <div>
             <div className="container init">
@@ -50,7 +67,7 @@ const Init = () =>{
                     <div>Our Newest Products</div>
                     <div className="init-search-bar">
                         <label className="init-search-text">search</label>
-                        <input id="init-search-input" type="text" onChange={handleSearch}/>
+                        <input id="init-search-input" type="text" name="search" onChange={handleSearch}/>
                     </div>
                 </div>
             </div>
@@ -65,7 +82,7 @@ const Init = () =>{
                                 <div className="prod-card-details">item details :</div>
                                 <div className="prod-card-details product-after">{prod.description}</div>
                                 <div className="prod-price-rating"><div>price</div><div>rating</div></div>
-                                <div className="prod-price-rating"><div><span class="prod-price">PhP {prod.price}.00</span></div>
+                                <div className="prod-price-rating"><div><span className="prod-price">PhP {prod.price}.00</span></div>
                                         <div className="prod-rating">{rating(parseInt(prod.curr_rating))}</div></div>
                                 
                                 <div className="prod-card-add2cart"><button>Add to Cart</button></div>
@@ -79,16 +96,18 @@ const Init = () =>{
                                 <div className="prod-card-details">item details :</div>
                                 <div className="prod-card-details product-after">{prod.description}</div>
                                 <div className="prod-price-rating"><div>price</div><div>rating</div></div>
-                                <div className="prod-price-rating"><div><span class="prod-price">PhP {prod.price}.00</span></div>
+                                <div className="prod-price-rating"><div><span className="prod-price">PhP {prod.price}.00</span></div>
                                         <div className="prod-rating">{rating(parseInt(prod.curr_rating))}</div></div>
                                 
-                                <div className="prod-card-add2cart"><button>Add to Cart</button></div>
+                                <div className="prod-card-add2cart"><button>Add to Cart</button><button value={prod.id} onClick={(e)=>toggleView(e.target.value)}>view</button></div>
+
                             </div>
                             )
                     }
                 })}
                 </div>
             </div>
+            <ProductView toggleProdView={toggleProdView} handleClose={handleClose} viewProd={viewProd} rating={rating}/>
         </div>
     )
 }

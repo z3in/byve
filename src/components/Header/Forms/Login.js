@@ -8,7 +8,9 @@ const Login = (props) =>{
     const {value: email, bind:bindEmail, reset: resetEmail } = InputHandler('')
     const {value: password, bind:bindPassword, reset: resetPassword } = InputHandler('')
     const [postData,setPostData] = useState({})
-    const { result } = AuthenticateUser(postData)
+
+    async const { result } = AuthenticateUser(postData)
+    await console.log(result)
 
     const handleSubmit =(e) => {
         e.preventDefault()
@@ -20,18 +22,17 @@ const Login = (props) =>{
                 password: password
             })
         }
-        console.log(result.message);
     }
     return(
         <div className={`login-main${props.toggle}`}>
             <div className='login-modal-bg'> 
                 <div className="login-header">
-                    <div className="login-header-title"><h5>SIGN IN <span className="colored-text">with</span></h5> </div>
-                    <div className="login-modal-close"><button onClick={props.handleToggle}>X</button></div>
+                    <div className="login-header-title"><h5>SIGN IN <span className="colored-text">using</span></h5> </div>
+                   
                 </div>
                 <div className="login-body first">
                     <button className="fb">Facebook</button>
-                    <button className="gmail">Gmail</button>
+                    <button className="gmail">Google</button>
                 </div>
                 <div className="login-body mid">
                     <span className="login-mid-text"> - OR -</span>
@@ -50,8 +51,9 @@ const Login = (props) =>{
                         <input type="password" 
                         {...bindPassword}/>
                     </div>
-                    <div>
-                        <button type="submit">SIGN IN</button>
+                    <div className="login-btns">
+                        <div><button type="submit">SIGN IN</button></div>
+                        <div className="login-modal-close"><button onClick={props.handleToggle}>cancel</button></div>
                     </div>
                     
                 </form>
